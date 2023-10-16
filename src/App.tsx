@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import CreateRecipe from './components/create-recipe/CreateRecipe'
 import Header from './components/header/Header'
 import RecipeItem from './components/recipe-item/RecipeItem'
-import { useGetRecipesQuery } from './store/api/api'
+import { useGetCategoriesQuery, useGetRecipesQuery } from './store/api/api'
 // import User from './components/user/User'
 import { IRecipe } from './types/recipe.types'
 
@@ -16,9 +16,19 @@ function App() {
 		setQueryTerm(searchTerm)
 	}
 
+	const { isLoading: isLoadingCategory, data: dataCategory } =
+		useGetCategoriesQuery('')
+
 	return (
 		<section>
 			<Header />
+			<div>
+				{isLoadingCategory ? (
+					<div>Loading...</div>
+				) : (
+					dataCategory && dataCategory.map(item => <div>{item.category}</div>)
+				)}
+			</div>
 			{/* <User /> */}
 			<CreateRecipe />
 			<div style={{ padding: 10 }}>
