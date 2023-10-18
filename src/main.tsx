@@ -5,7 +5,7 @@ import App from './App.jsx'
 import './index.css'
 import { store } from './store/store'
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 	<React.StrictMode>
 		<Provider store={store}>
 			<App />
