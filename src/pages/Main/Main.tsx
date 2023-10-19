@@ -16,6 +16,7 @@ function App() {
 			aside={<Filter />}
 			main={
 				<Recipes
+					title={'Recipes'}
 					items={data}
 					isLoading={isLoading}
 					queryTerm={queryTerm}

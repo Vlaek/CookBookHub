@@ -4,6 +4,7 @@ import RecipeItem from '../RecipeItem/RecipeItem'
 import { IRecipe } from '../../types/recipe.types'
 
 interface RecipesProps {
+	title: string
 	items: IRecipe[] | undefined
 	isLoading: boolean
 	queryTerm: string
@@ -11,6 +12,7 @@ interface RecipesProps {
 }
 
 const Recipes: FC<RecipesProps> = ({
+	title,
 	items,
 	isLoading,
 	queryTerm,
@@ -26,7 +28,7 @@ const Recipes: FC<RecipesProps> = ({
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.header}>
-				<div className={styles.title}>Recipes</div>
+				<div className={styles.title}>{title}</div>
 			</div>
 			<div className={styles.main}>
 				<div className={styles.search}>

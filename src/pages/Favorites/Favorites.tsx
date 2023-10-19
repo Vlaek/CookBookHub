@@ -16,6 +16,7 @@ function Favorites() {
 			aside={<Filter />}
 			main={
 				<Recipes
+					title={'Favorites'}
 					items={favorites}
 					isLoading={false}
 					queryTerm={queryTerm}

@@ -20,11 +20,14 @@ aside {
 	border-radius: 15px;
 	width: 100%;
 	max-height: 750px;
+	position: sticky;
+	top: 75px;
 }
 
 main {
 	grid-area: m;
 	background-color: #eee;
 	border-radius: 15px;
+	min-height: 750px;
 	width: 100%;
 }
