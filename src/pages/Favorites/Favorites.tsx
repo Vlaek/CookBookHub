@@ -3,12 +3,12 @@ import Filter from '../../components/Filter/Filter'
 import Header from '../../components/Header/Header'
 import Recipes from '../../components/Recipes/Recipes'
 import Layout from '../../containers/Layout/Layout'
-import { useGetRecipesQuery } from '../../store/api/api'
+import { useFavorites } from '../../hooks/useFavorites'
 
-function App() {
+function Favorites() {
 	const [queryTerm, setQueryTerm] = useState('')
 
-	const { isLoading, data } = useGetRecipesQuery(queryTerm)
+	const { favorites } = useFavorites()
 
 	return (
 		<Layout
@@ -16,8 +16,8 @@ function App() {
 			aside={<Filter />}
 			main={
 				<Recipes
-					items={data}
-					isLoading={isLoading}
+					items={favorites}
+					isLoading={false}
 					queryTerm={queryTerm}
 					setQueryTerm={setQueryTerm}
 				/>
@@ -26,4 +26,4 @@ function App() {
 	)
 }
 
-export default App
+export default Favorites

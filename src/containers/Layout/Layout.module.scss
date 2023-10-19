@@ -1,0 +1,30 @@
+.wrapper {
+	display: grid;
+	grid-template-areas:
+		'h h h'
+		'a m m';
+	grid-template-rows: 90px 1fr;
+	grid-template-columns: 1fr 1fr 1fr;
+	row-gap: 35px;
+	column-gap: 35px;
+	margin-bottom: 60px;
+}
+
+header {
+	grid-area: h;
+}
+
+aside {
+	grid-area: a;
+	background-color: #eee;
+	border-radius: 15px;
+	width: 100%;
+	max-height: 750px;
+}
+
+main {
+	grid-area: m;
+	background-color: #eee;
+	border-radius: 15px;
+	width: 100%;
+}

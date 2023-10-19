@@ -1,15 +1,44 @@
-import React from 'react'
-import { BsFillBookmarkHeartFill } from 'react-icons/bs'
+import { useNavigate } from 'react-router-dom'
 import styles from './Header.module.css'
-import { useFavorites } from './../../hooks/useFavorites'
 
 export default function Header() {
-	const { favorites } = useFavorites()
+	const navigate = useNavigate()
 
 	return (
-		<header className={styles.header}>
-			<BsFillBookmarkHeartFill fontSize={20} />
-			<span>{favorites.length}</span>
-		</header>
+		<div className={styles.wrapper}>
+			<div className={styles.logo}>CookBookHub</div>
+			<nav className={styles.nav}>
+				<button
+					className={styles.button}
+					onClick={() => navigate('/CookBookHub/recipes')}
+				>
+					Recipes
+				</button>
+				<button
+					className={styles.button}
+					onClick={() => navigate('/CookBookHub/favorites')}
+				>
+					Favorites
+				</button>
+				<button
+					className={styles.button}
+					onClick={() => navigate('/CookBookHub/about')}
+				>
+					About Us
+				</button>
+				<button
+					className={styles.button}
+					onClick={() => navigate('/CookBookHub/contacts')}
+				>
+					Contacts
+				</button>
+				<button
+					className={styles.button}
+					onClick={() => navigate('/CookBookHub/auth')}
+				>
+					LogOut
+				</button>
+			</nav>
+		</div>
 	)
 }

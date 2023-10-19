@@ -6,7 +6,7 @@ const Auth: FC = () => {
 	const navigate = useNavigate()
 
 	const handleClick = () => {
-		navigate('CookBookHub/')
+		navigate('/CookBookHub')
 	}
 
 	return (

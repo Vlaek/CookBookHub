@@ -1,0 +1,29 @@
+.item {
+	display: flex;
+	margin: 30px 0;
+	border-radius: 5px;
+}
+
+.image {
+	width: 100px;
+	margin-right: 30px;
+}
+
+.info {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+h3,
+h4 {
+	font-weight: normal;
+}
+
+.item img {
+	border-radius: 5px;
+}
+
+.button {
+	width: 200px;
+}

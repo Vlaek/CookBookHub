@@ -1,0 +1,49 @@
+.wrapper {
+	min-height: 700px;
+}
+
+.header {
+	height: 90px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.title {
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.main {
+	padding: 0 25px;
+}
+
+.search {
+	display: flex;
+	height: 60px;
+}
+
+.input {
+	height: 100%;
+	width: 100%;
+	padding: 15px;
+	font-size: 20px;
+}
+
+.button {
+	height: 100%;
+	color: #000;
+	font-size: 16px;
+	padding: 0 20px;
+	font-weight: bold;
+	margin-left: 30px;
+}
+
+.error {
+	width: 100%;
+	margin-top: 50px;
+	text-align: center;
+	color: #666;
+	font-weight: bold;
+	font-size: 32px;
+}

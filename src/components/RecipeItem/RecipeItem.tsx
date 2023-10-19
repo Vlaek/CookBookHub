@@ -17,11 +17,23 @@ const RecipeItem: FC<IRecipeItem> = ({ recipe }) => {
 
 	return (
 		<div className={styles.item}>
-			<img src={recipe.image} alt='img' width={100} />
-			<h2>{recipe.name}</h2>
-			<button onClick={() => toggleFavorites(recipe)}>
-				{isExists ? 'Romove from' : 'Add to'} favorites
-			</button>
+			<img
+				className={styles.image}
+				src={recipe.image}
+				alt='img'
+				draggable={false}
+			/>
+			<div className={styles.info}>
+				<h2>{recipe.name}</h2>
+				<h3>{recipe.area}</h3>
+				<h4>{recipe.category}</h4>
+				<button
+					className={styles.button}
+					onClick={() => toggleFavorites(recipe)}
+				>
+					{isExists ? 'Romove from' : 'Add to'} favorites
+				</button>
+			</div>
 		</div>
 	)
 }
