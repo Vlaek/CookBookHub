@@ -28,12 +28,6 @@ export default function Header() {
 				</button>
 				<button
 					className={styles.button}
-					onClick={() => navigate('/CookBookHub/contacts')}
-				>
-					Contacts
-				</button>
-				<button
-					className={styles.button}
 					onClick={() => navigate('/CookBookHub/auth')}
 				>
 					LogOut

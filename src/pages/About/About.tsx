@@ -2,6 +2,8 @@ import { FC } from 'react'
 import styles from './About.module.scss'
 import Header from '../../components/Header/Header'
 import Layout from '../../containers/Layout/Layout'
+import { FaTelegram, FaYoutube, FaVk } from 'react-icons/fa6'
+import { AiFillMail } from 'react-icons/ai'
 
 const Main = () => {
 	return (
@@ -66,6 +68,17 @@ const Main = () => {
 					your loved ones. Thank you for choosing CookBookHub as your go-to
 					source for delicious recipes from around the world.
 				</p>
+			</div>
+			<div className={styles.header}>
+				<div className={styles.title}>Contacts</div>
+			</div>
+			<div className={styles.main}>
+				<div className={styles.contacts}>
+					<FaTelegram className={styles.contact} />
+					<FaYoutube className={styles.contact} />
+					<FaVk className={styles.contact} />
+					<AiFillMail className={styles.contact} />
+				</div>
 			</div>
 		</div>
 	)
