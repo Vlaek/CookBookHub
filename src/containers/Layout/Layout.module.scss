@@ -10,6 +10,12 @@
 	margin-bottom: 60px;
 }
 
+.wide {
+	grid-template-areas:
+		'h h h'
+		'm m m';
+}
+
 header {
 	grid-area: h;
 }
