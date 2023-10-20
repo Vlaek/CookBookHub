@@ -8,12 +8,16 @@
 	row-gap: 35px;
 	column-gap: 35px;
 	margin-bottom: 60px;
+	width: 100%;
 }
 
 .wide {
 	grid-template-areas:
-		'h h h'
-		'm m m';
+		'h'
+		'm';
+	grid-template-columns: 100%;
+	column-gap: 0;
+	margin-bottom: 0;
 }
 
 header {
