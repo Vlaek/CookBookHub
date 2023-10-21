@@ -7,7 +7,7 @@ const API_URL = 'http://localhost:3000'
 
 export const api = createApi({
 	reducerPath: 'api',
-	tagTypes: ['Recipe', 'Category', 'Area'],
+	tagTypes: ['Recipes', 'Recipe', 'Category', 'Area'],
 	baseQuery: fetchBaseQuery({
 		baseUrl: API_URL,
 	}),
@@ -19,6 +19,15 @@ export const api = createApi({
 			query: ({ searchTerm, sortOrder, setFilter }) =>
 				`/recipes?${setFilter}&${sortOrder}&q=${searchTerm}`,
 			providesTags: (result, error, { searchTerm }) => [
+				{
+					type: 'Recipes',
+					id: searchTerm,
+				},
+			],
+		}),
+		getRecipeById: builder.query<IRecipe[], string>({
+			query: searchTerm => `/recipes?id=${searchTerm}`,
+			providesTags: (result, error, searchTerm) => [
 				{
 					type: 'Recipe',
 					id: searchTerm,
@@ -60,6 +69,7 @@ export const api = createApi({
 
 export const {
 	useGetRecipesQuery,
+	useGetRecipeByIdQuery,
 	useGetCategoriesQuery,
 	useGetAreasQuery,
 	useCreateRecipeMutation,

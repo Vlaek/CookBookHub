@@ -2,7 +2,8 @@ import styles from './RecipeItem.module.css'
 import { useActions } from '../../hooks/useActions'
 import { useFavorites } from '../../hooks/useFavorites'
 import { IRecipe } from '../../types/recipe.types'
-import React, { FC } from 'react'
+import { FC } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 interface IRecipeItem {
 	recipe: IRecipe
@@ -15,6 +16,8 @@ const RecipeItem: FC<IRecipeItem> = ({ recipe }) => {
 
 	const isExists = favorites.some(r => r.id === recipe.id)
 
+	const navigate = useNavigate()
+
 	return (
 		<div className={styles.item}>
 			<img
@@ -22,9 +25,12 @@ const RecipeItem: FC<IRecipeItem> = ({ recipe }) => {
 				src={recipe.image}
 				alt='img'
 				draggable={false}
+				onClick={() => navigate('/CookBookHub/recipe/' + recipe.id)}
 			/>
 			<div className={styles.info}>
-				<h2>{recipe.name}</h2>
+				<h2 onClick={() => navigate('/CookBookHub/recipe/' + recipe.id)}>
+					{recipe.name}
+				</h2>
 				<h3>{recipe.area}</h3>
 				<h4>{recipe.category}</h4>
 				<button

@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, useState } from 'react'
+import { FC } from 'react'
 import styles from './Recipes.module.scss'
 import RecipeItem from '../RecipeItem/RecipeItem'
 import { IRecipe } from '../../types/recipe.types'
@@ -18,13 +18,6 @@ const Recipes: FC<RecipesProps> = ({
 	queryTerm,
 	setQueryTerm,
 }) => {
-	// const [searchTerm, setSearchTerm] = useState('')
-	// const [queryTerm, setQueryTerm] = useState('')
-
-	// const handleSearch = () => {
-	// 	setQueryTerm(queryTerm)
-	// }
-
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.header}>
@@ -41,9 +34,6 @@ const Recipes: FC<RecipesProps> = ({
 						}
 						placeholder={'Enter search term'}
 					/>
-					{/* <button className={styles.button} onClick={handleSearch}>
-						Search
-					</button> */}
 				</div>
 				<div className={styles.list}>
 					{isLoading ? (

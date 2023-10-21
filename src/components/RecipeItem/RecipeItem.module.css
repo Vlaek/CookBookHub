@@ -7,12 +7,26 @@
 .image {
 	width: 100px;
 	margin-right: 30px;
+	cursor: pointer;
+	transition: transform 0.3s ease;
+
+	&:hover {
+		transform: scale(1.02);
+	}
 }
 
 .info {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+}
+
+h2 {
+	cursor: pointer;
+
+	&:hover {
+		text-decoration: underline;
+	}
 }
 
 h3,
