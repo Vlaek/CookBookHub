@@ -30,14 +30,14 @@ const Main: FC = () => {
 					<div className={styles.ingredients}>
 						<span>Ingredients: </span>
 						{recipe.ingredients.map(item => (
-							<span>{item}</span>
+							<span key={item}>{item}</span>
 						))}
 					</div>
 					{recipe.tags !== null && (
 						<div className={styles.tags}>
 							<span>Tags: </span>
 							{recipe.tags.split(',').map(item => (
-								<span>#{item}</span>
+								<span key={item}>#{item}</span>
 							))}
 						</div>
 					)}

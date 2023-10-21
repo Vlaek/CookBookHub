@@ -64,7 +64,6 @@ const Filter: FC = () => {
 				'&' +
 				arrayToString(areasBoxes, 'area'),
 		})
-		console.log(filter.filter)
 	}, [categoriesBoxes, areasBoxes])
 
 	return (

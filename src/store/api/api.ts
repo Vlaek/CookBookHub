@@ -7,7 +7,7 @@ const API_URL = 'http://localhost:3000'
 
 export const api = createApi({
 	reducerPath: 'api',
-	tagTypes: ['Recipes', 'Recipe', 'Category', 'Area'],
+	tagTypes: ['Recipes', 'Category', 'Area', 'Favorites'],
 	baseQuery: fetchBaseQuery({
 		baseUrl: API_URL,
 	}),
@@ -29,7 +29,7 @@ export const api = createApi({
 			query: searchTerm => `/recipes?id=${searchTerm}`,
 			providesTags: (result, error, searchTerm) => [
 				{
-					type: 'Recipe',
+					type: 'Recipes',
 					id: searchTerm,
 				},
 			],
@@ -60,7 +60,52 @@ export const api = createApi({
 			}),
 			invalidatesTags: () => [
 				{
-					type: 'Recipe',
+					type: 'Recipes',
+				},
+			],
+		}),
+		getFavorites: builder.query<
+			IRecipe[],
+			{ searchTerm: string; sortOrder: string; setFilter: string }
+		>({
+			query: ({ searchTerm, sortOrder, setFilter }) =>
+				`/favorites?${setFilter}&${sortOrder}&q=${searchTerm}`,
+			providesTags: (result, error, { searchTerm }) => [
+				{
+					type: 'Favorites',
+					id: searchTerm,
+				},
+			],
+		}),
+		getFavoritesById: builder.query<IRecipe[], number>({
+			query: searchTerm => `/favorites?id=${searchTerm}`,
+			providesTags: (result, error, searchTerm) => [
+				{
+					type: 'Favorites',
+					id: searchTerm,
+				},
+			],
+		}),
+		createFavorites: builder.mutation<null, IRecipeData>({
+			query: recipe => ({
+				body: recipe,
+				url: '/favorites',
+				method: 'POST',
+			}),
+			invalidatesTags: () => [
+				{
+					type: 'Favorites',
+				},
+			],
+		}),
+		deleteFavorites: builder.mutation<null, number>({
+			query: id => ({
+				url: `/favorites/${id}`,
+				method: 'DELETE',
+			}),
+			invalidatesTags: () => [
+				{
+					type: 'Favorites',
 				},
 			],
 		}),
@@ -73,4 +118,8 @@ export const {
 	useGetCategoriesQuery,
 	useGetAreasQuery,
 	useCreateRecipeMutation,
+	useGetFavoritesQuery,
+	useGetFavoritesByIdQuery,
+	useCreateFavoritesMutation,
+	useDeleteFavoritesMutation,
 } = api

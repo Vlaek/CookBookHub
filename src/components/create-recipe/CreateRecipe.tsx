@@ -15,7 +15,6 @@ const CreateRecipe = () => {
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
-		console.log(recipe)
 		createRecipe(recipe).then(() => setRecipe(defaultValue))
 	}
 

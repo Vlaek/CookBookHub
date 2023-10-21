@@ -2,21 +2,34 @@ import styles from './RecipeItem.module.css'
 import { useActions } from '../../hooks/useActions'
 import { useFavorites } from '../../hooks/useFavorites'
 import { IRecipe } from '../../types/recipe.types'
-import { FC } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import {
+	useCreateFavoritesMutation,
+	useDeleteFavoritesMutation,
+	useGetFavoritesByIdQuery,
+	useGetFavoritesQuery,
+} from '../../store/api/api'
+import useDebounce from '../../hooks/useDebounce'
+import { useTypedSelector } from '../../hooks/useTypedSelector'
 
 interface IRecipeItem {
 	recipe: IRecipe
 }
 
 const RecipeItem: FC<IRecipeItem> = ({ recipe }) => {
-	const { favorites } = useFavorites()
+	const { data } = useGetFavoritesByIdQuery(recipe.id)
 
 	const { toggleFavorites } = useActions()
 
-	const isExists = favorites.some(r => r.id === recipe.id)
+	const isExists = data?.some(r => r.id === recipe.id)
+
+	useEffect(() => {}, [isExists])
 
 	const navigate = useNavigate()
+
+	const [createFavorites] = useCreateFavoritesMutation()
+	const [deleteFavorites] = useDeleteFavoritesMutation()
 
 	return (
 		<div className={styles.item}>
@@ -35,9 +48,12 @@ const RecipeItem: FC<IRecipeItem> = ({ recipe }) => {
 				<h4>{recipe.category}</h4>
 				<button
 					className={styles.button}
-					onClick={() => toggleFavorites(recipe)}
+					onClick={() => {
+						toggleFavorites(recipe)
+						isExists ? deleteFavorites(recipe.id) : createFavorites(recipe)
+					}}
 				>
-					{isExists ? 'Romove from' : 'Add to'} favorites
+					{isExists ? 'Remove from' : 'Add to'} favorites
 				</button>
 			</div>
 		</div>
