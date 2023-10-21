@@ -1,6 +1,5 @@
 import styles from './RecipeItem.module.css'
 import { useActions } from '../../hooks/useActions'
-import { useFavorites } from '../../hooks/useFavorites'
 import { IRecipe } from '../../types/recipe.types'
 import { FC, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -8,10 +7,7 @@ import {
 	useCreateFavoritesMutation,
 	useDeleteFavoritesMutation,
 	useGetFavoritesByIdQuery,
-	useGetFavoritesQuery,
 } from '../../store/api/api'
-import useDebounce from '../../hooks/useDebounce'
-import { useTypedSelector } from '../../hooks/useTypedSelector'
 
 interface IRecipeItem {
 	recipe: IRecipe
