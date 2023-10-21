@@ -2,7 +2,7 @@ import { FC } from 'react'
 import styles from './About.module.scss'
 import Header from '../../components/Header/Header'
 import Layout from '../../containers/Layout/Layout'
-import { FaTelegram, FaYoutube, FaVk } from 'react-icons/fa6'
+import { FaTelegram, FaYoutube, FaVk, FaGithub } from 'react-icons/fa6'
 import { AiFillMail } from 'react-icons/ai'
 
 const Main = () => {
@@ -76,6 +76,9 @@ const Main = () => {
 				<div className={styles.contacts}>
 					<FaTelegram className={styles.contact} />
 					<FaYoutube className={styles.contact} />
+					<a href='https://github.com/Vlaek/CookBookHub' target='_blank'>
+						<FaGithub className={styles.contact} />
+					</a>
 					<FaVk className={styles.contact} />
 					<AiFillMail className={styles.contact} />
 				</div>
