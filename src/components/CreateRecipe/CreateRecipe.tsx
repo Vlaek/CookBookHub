@@ -6,6 +6,11 @@ import { IRecipeData } from '../../types/recipe.types'
 const defaultValue: IRecipeData = {
 	name: '',
 	image: '',
+	describe: '',
+	category: '',
+	area: '',
+	tags: null,
+	ingredients: [],
 }
 
 const CreateRecipe = () => {
