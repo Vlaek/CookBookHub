@@ -9,6 +9,7 @@ interface RecipesProps {
 	isLoading: boolean
 	queryTerm: string
 	setQueryTerm: React.Dispatch<React.SetStateAction<string>>
+	url?: string
 }
 
 const Recipes: FC<RecipesProps> = ({
@@ -17,6 +18,7 @@ const Recipes: FC<RecipesProps> = ({
 	isLoading,
 	queryTerm,
 	setQueryTerm,
+	url = 'recipe',
 }) => {
 	return (
 		<div className={styles.wrapper}>
@@ -43,7 +45,7 @@ const Recipes: FC<RecipesProps> = ({
 							<div className={styles.error}>Recipes not found</div>
 						) : (
 							items.map((recipe: IRecipe) => (
-								<RecipeItem key={recipe.id} recipe={recipe} />
+								<RecipeItem key={recipe.id} recipe={recipe} url={url} />
 							))
 						)
 					) : (

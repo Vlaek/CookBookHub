@@ -17,7 +17,7 @@ function Favorites() {
 
 	const { filter } = useTypedSelector(state => state)
 
-	const { data } = useGetFavoritesQuery({
+	const { data, isLoading } = useGetFavoritesQuery({
 		searchTerm: debouncedQuery,
 		sortOrder: filter.sort,
 		setFilter: filter.filter,
@@ -31,7 +31,7 @@ function Favorites() {
 				<Recipes
 					title={'Favorites'}
 					items={data}
-					isLoading={false}
+					isLoading={isLoading}
 					queryTerm={queryTerm}
 					setQueryTerm={setQueryTerm}
 				/>

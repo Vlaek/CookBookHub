@@ -7,7 +7,7 @@ const API_URL = 'http://localhost:3000'
 
 export const api = createApi({
 	reducerPath: 'api',
-	tagTypes: ['Recipes', 'Category', 'Area', 'Favorites'],
+	tagTypes: ['Recipes', 'Category', 'Area', 'Favorites', 'MyRecipes'],
 	baseQuery: fetchBaseQuery({
 		baseUrl: API_URL,
 	}),
@@ -52,15 +52,44 @@ export const api = createApi({
 				},
 			],
 		}),
-		createRecipe: builder.mutation<null, IRecipeData>({
+		getMyRecipes: builder.query<IRecipe[], string>({
+			query: searchTerm => `/myRecipes?q=${searchTerm}`,
+			providesTags: (result, error, searchTerm) => [
+				{
+					type: 'MyRecipes',
+					id: searchTerm,
+				},
+			],
+		}),
+		getMyRecipeById: builder.query<IRecipe[], string>({
+			query: searchTerm => `/myRecipes?id=${searchTerm}`,
+			providesTags: (result, error, searchTerm) => [
+				{
+					type: 'MyRecipes',
+					id: searchTerm,
+				},
+			],
+		}),
+		createMyRecipe: builder.mutation<null, IRecipeData>({
 			query: recipe => ({
 				body: recipe,
-				url: '/',
+				url: '/myRecipes',
 				method: 'POST',
 			}),
 			invalidatesTags: () => [
 				{
-					type: 'Recipes',
+					type: 'MyRecipes',
+				},
+			],
+		}),
+		deleteMyRecipe: builder.mutation<null, number>({
+			query: id => ({
+				url: `/myRecipes/${id}`,
+				method: 'DELETE',
+			}),
+			invalidatesTags: () => [
+				{
+					type: 'MyRecipes',
 				},
 			],
 		}),
@@ -117,7 +146,10 @@ export const {
 	useGetRecipeByIdQuery,
 	useGetCategoriesQuery,
 	useGetAreasQuery,
-	useCreateRecipeMutation,
+	useGetMyRecipesQuery,
+	useGetMyRecipeByIdQuery,
+	useCreateMyRecipeMutation,
+	useDeleteMyRecipeMutation,
 	useGetFavoritesQuery,
 	useGetFavoritesByIdQuery,
 	useCreateFavoritesMutation,

@@ -22,6 +22,12 @@ export default function Header() {
 				</button>
 				<button
 					className={styles.button}
+					onClick={() => navigate('/CookBookHub/my-recipes')}
+				>
+					My Recipes
+				</button>
+				<button
+					className={styles.button}
 					onClick={() => navigate('/CookBookHub/about')}
 				>
 					About Us

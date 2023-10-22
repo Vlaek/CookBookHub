@@ -1,6 +1,9 @@
 import { FC } from 'react'
-import { useParams } from 'react-router-dom'
-import { useGetRecipeByIdQuery } from '../../store/api/api'
+import { useLocation, useParams } from 'react-router-dom'
+import {
+	useGetMyRecipeByIdQuery,
+	useGetRecipeByIdQuery,
+} from '../../store/api/api'
 import styles from './Recipe.module.scss'
 import Layout from '../../containers/Layout/Layout'
 import Header from '../../components/Header/Header'
@@ -8,7 +11,13 @@ import Header from '../../components/Header/Header'
 const Main: FC = () => {
 	const { id = '' } = useParams()
 
-	const { data } = useGetRecipeByIdQuery(id)
+	const location = useLocation()
+
+	const isMyRecipePage = location.pathname.includes('myRecipe')
+
+	const { data } = isMyRecipePage
+		? useGetMyRecipeByIdQuery(id)
+		: useGetRecipeByIdQuery(id)
 
 	if (data === undefined) return
 
