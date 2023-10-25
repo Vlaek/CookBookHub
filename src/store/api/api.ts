@@ -82,6 +82,21 @@ export const api = createApi({
 				},
 			],
 		}),
+		updateMyRecipe: builder.mutation<null, IRecipe>({
+			query(data) {
+				const { id, ...body } = data
+				return {
+					url: `/myRecipes/${id}`,
+					method: 'PUT',
+					body,
+				}
+			},
+			invalidatesTags: () => [
+				{
+					type: 'MyRecipes',
+				},
+			],
+		}),
 		deleteMyRecipe: builder.mutation<null, number>({
 			query: id => ({
 				url: `/myRecipes/${id}`,
@@ -149,6 +164,7 @@ export const {
 	useGetMyRecipesQuery,
 	useGetMyRecipeByIdQuery,
 	useCreateMyRecipeMutation,
+	useUpdateMyRecipeMutation,
 	useDeleteMyRecipeMutation,
 	useGetFavoritesQuery,
 	useGetFavoritesByIdQuery,

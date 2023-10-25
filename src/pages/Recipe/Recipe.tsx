@@ -8,9 +8,7 @@ import styles from './Recipe.module.scss'
 import Layout from '../../containers/Layout/Layout'
 import Header from '../../components/Header/Header'
 
-const Main: FC = () => {
-	const { id = '' } = useParams()
-
+export const RecipeMain: FC<{ id: string }> = ({ id }) => {
 	const location = useLocation()
 
 	const isMyRecipePage = location.pathname.includes('myRecipe')
@@ -58,7 +56,8 @@ const Main: FC = () => {
 }
 
 const Recipe: FC = () => {
-	return <Layout header={<Header />} main={<Main />} />
+	const { id = '' } = useParams()
+	return <Layout header={<Header />} main={<RecipeMain id={id} />} />
 }
 
 export default Recipe

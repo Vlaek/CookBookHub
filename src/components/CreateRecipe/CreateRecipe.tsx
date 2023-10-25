@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useEffect, useLayoutEffect } from 'react'
 import { useState } from 'react'
-import { useCreateMyRecipeMutation } from '../../store/api/api'
-import { IRecipeData } from '../../types/recipe.types'
+import {
+	useCreateMyRecipeMutation,
+	useDeleteMyRecipeMutation,
+	useGetMyRecipeByIdQuery,
+	useUpdateMyRecipeMutation,
+} from '../../store/api/api'
+import { IRecipe, IRecipeData } from '../../types/recipe.types'
 import styles from './CreateRecipe.module.scss'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 
 const defaultValue: IRecipeData = {
 	name: '',
@@ -15,13 +21,37 @@ const defaultValue: IRecipeData = {
 }
 
 const CreateRecipe = () => {
-	const [recipe, setRecipe] = useState<IRecipeData>(defaultValue)
+	const location = useLocation()
+
+	const isMyRecipeEditPage = location.pathname.includes('myRecipeEdit')
+
+	const { id } = useParams()
+
+	const { data, isLoading } = useGetMyRecipeByIdQuery(String(id))
+
+	const [recipe, setRecipe] = useState<IRecipeData | IRecipe>(defaultValue)
+
+	useEffect(() => {
+		if (data !== undefined && data[0] !== undefined) {
+			setRecipe(data[0])
+		} else {
+			setRecipe(defaultValue)
+		}
+	}, [isLoading])
+
+	const navigate = useNavigate()
 
 	const [createMyRecipe] = useCreateMyRecipeMutation()
+	const [updateMyRecipe] = useUpdateMyRecipeMutation()
+	const [deleteMyRecipe] = useDeleteMyRecipeMutation()
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
-		createMyRecipe(recipe).then(() => setRecipe(defaultValue))
+		if (isMyRecipeEditPage && id !== undefined) {
+			updateMyRecipe({ ...recipe, id: +id })
+		} else {
+			createMyRecipe(recipe)
+		}
 	}
 
 	return (
@@ -109,10 +139,33 @@ const CreateRecipe = () => {
 						setRecipe({ ...recipe, ingredients: e.target.value.split(', ') })
 					}
 				/>
-
-				<button className={styles.button} type='submit'>
-					Create
-				</button>
+				{isMyRecipeEditPage ? (
+					<>
+						<button
+							className={styles.button}
+							style={{ marginBottom: 10 }}
+							type='submit'
+						>
+							Edit
+						</button>
+						<button
+							className={styles.button}
+							type='submit'
+							onClick={() => {
+								if (id !== undefined) {
+									deleteMyRecipe(+id)
+									navigate('/CookBookHub/my-recipes')
+								}
+							}}
+						>
+							Delete
+						</button>
+					</>
+				) : (
+					<button className={styles.button} type='submit'>
+						Create
+					</button>
+				)}
 			</div>
 		</form>
 	)

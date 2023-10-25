@@ -50,7 +50,12 @@ const RecipeItem: FC<IRecipeItem> = ({ recipe, url }) => {
 				<h4>{recipe.category}</h4>
 				{isMyRecipePage ? (
 					<>
-						<button className={styles.button}>Edit Recipe</button>
+						<button
+							className={styles.button}
+							onClick={() => navigate('/CookBookHub/myRecipeEdit/' + recipe.id)}
+						>
+							Edit Recipe
+						</button>
 						<RiDeleteBinFill
 							className={styles.btn_del}
 							onClick={() => deleteMyRecipe(recipe.id)}
