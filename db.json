@@ -869,7 +869,32 @@
       "area": "Vietnamese"
     }
   ],
-  "favorites": [],
+  "favorites": [
+    {
+      "id": 33,
+      "name": "Vietnamese Grilled Pork (bun-thit-nuong)",
+      "image": "https://www.themealdb.com/images/media/meals/qqwypw1504642429.jpg",
+      "describe": "Slice the uncooked pork thinly, about ⅛\". It helps to slightly freeze it (optional).\r\nMince garlic and shallots. Mix in a bowl with sugar, fish sauce, thick soy sauce, pepper, and oil until sugar dissolves.\r\nMarinate the meat for 1 hour, or overnight for better results.\r\nBake the pork at 375F for 10-15 minutes or until about 80% cooked. Finish cooking by broiling in the oven until a nice golden brown color develops, flipping the pieces midway.\r\nAssemble your bowl with veggies, noodles, and garnish. Many like to mix the whole bowl up and pour the fish sauce on top, but I like to make individual bites and sauce it slowly.",
+      "category": "Pork",
+      "area": "Vietnamese",
+      "tags": null,
+      "ingredients": [
+        "Pork",
+        "Rice Vermicelli",
+        "Egg Rolls",
+        "Challots",
+        "Garlic",
+        "Sugar",
+        "Fish Sauce",
+        "Soy sauce",
+        "Pepper",
+        "Olive Oil",
+        "Cucumber",
+        "Mint",
+        "Peanuts"
+      ]
+    }
+  ],
   "myRecipes": [
     {
       "name": "Garides Saganaki",

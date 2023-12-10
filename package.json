@@ -1,7 +1,8 @@
 {
-	"name": "react-redux-ts-rtk",
+	"name": "CookBookHub",
 	"private": true,
 	"version": "0.0.0",
+	"homepage": "https://vlaek.github.io/CookBookHub/",
 	"type": "module",
 	"scripts": {
 		"predeploy": "yarn run build",

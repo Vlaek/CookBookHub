@@ -11,5 +11,11 @@ CookBookHub is a React application that allows users to browse, create, edit, an
 - SCSS Modules
 - Redux
 - RTK Query
+- json-server
 
 # Illustrations
+
+![Search](https://media.giphy.com/media/0oABVbP3fJ4j3RNOaU/giphy.gif 'Search')
+![Filter](https://media.giphy.com/media/eEfRL0tQrtDk9pmWOO/giphy.gif 'Filter')
+![Favorites](https://media.giphy.com/media/qQGLkoSgm2ClLwh2XA/giphy.gif 'Favorites')
+![MyRecipe](https://media.giphy.com/media/WPnpjJJOWxP5srkyjp/giphy.gif 'MyRecipe')
