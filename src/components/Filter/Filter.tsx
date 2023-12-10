@@ -146,7 +146,7 @@ const Filter: FC = () => {
 					)}
 				</div>
 				<div className={styles.filter}>
-					<p className={styles.filter__title}>Category</p>
+					<p className={styles.filter__title}>Area</p>
 					{isLoadingAreas ? (
 						<div
 							className={styles.filter__title}
