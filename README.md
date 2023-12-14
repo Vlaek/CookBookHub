@@ -4,11 +4,9 @@ CookBookHub is a React application that allows users to browse, create, edit, an
 
 # Technologies
 
-- React
+- HTML, CSS, SASS, JavaScript, React, TypeScript
 - React Router Dom
 - React Icons
-- TypeScript
-- SCSS Modules
 - Redux
 - RTK Query
 - json-server
